@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios';
-const server = `http://localhost:3010`
+// const server = `http://localhost:3010`
+const server = 'https://boiling-caverns-58324.herokuapp.com'
 
 class App extends React.Component {
   state = {
@@ -27,6 +27,7 @@ class App extends React.Component {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `${server}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
     xhr.onreadystatechange = () => {
+      console.log(xhr.responseText)
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           const response = JSON.parse(xhr.responseText);
