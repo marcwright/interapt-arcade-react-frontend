@@ -1,11 +1,30 @@
 import React from 'react';
 import './App.css';
-// const server = `http://localhost:3010`
-const server = 'https://boiling-caverns-58324.herokuapp.com'
+import Card from './Card';
+import axios from 'axios';
+
+const server = `http://localhost:3010`
+// const server = 'https://boiling-caverns-58324.herokuapp.com'
 
 class App extends React.Component {
-  state = {
-    file: null
+  constructor(props) {
+    super()
+    this.state = {
+      file: null,
+      projects: [],
+      filteredProjects: [],
+      searchVal: ''
+    }
+  }
+
+  componentDidMount() {
+    axios({
+      url: `${server}/api/users`,
+      method: 'get'
+    })
+      .then(response => {
+        this.setState({ projects: response.data.users })
+      })
   }
 
   uploadFile = (file, signedRequest, url) => {
@@ -23,7 +42,8 @@ class App extends React.Component {
     };
     xhr.send(file);
   }
-  getSignedRequest = (file) => {
+
+  getSignedRequest = file => {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `${server}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
     xhr.onreadystatechange = () => {
@@ -56,12 +76,16 @@ class App extends React.Component {
     // this.getSignedRequest(formData);
   }
 
-  onChange = (e) => {
+  onChange = e => {
     this.setState({ file: e.target.files[0] });
   }
 
   render() {
     console.log(this.state)
+
+    const projectEls = this.state.projects.map(project => {
+      return <Card key={project.id} project={project} />
+    })
     return (
       <div className="App" >
         <div>File Upload</div>
@@ -71,10 +95,15 @@ class App extends React.Component {
           <button type="submit">Upload</button>
         </form>
 
-        {/* <form onSubmit={e => uploadFiles(e)} encType="multipart/form-data">
-        <input type="file" name="file-to-upload" />
-        <input type="submit" value="Upload" />
-      </form> */}
+        <main role="main">
+          <div className="album py-5">
+            <div className="container">
+              <div className="row animated fadeIn">
+                {projectEls}
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   }
