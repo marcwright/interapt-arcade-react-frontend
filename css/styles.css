@@ -1,0 +1,93 @@
+@font-face {
+    font-family: PressStart2P;
+    src: url(../fonts/PressStart2P.ttf);
+}
+@font-face {
+  font-family: Optimist;
+  src: url(../fonts/Optimist_Rg.ttf);
+}
+body {
+  font-family: Optimist;
+  color: red
+}
+.btn-success {
+  color: white !important
+}
+.card-img-top {
+  height: 13em;
+  max-height: 13em
+}
+.nav-container {
+  margin: 0 10vw
+}
+.black {
+  color: black
+}
+.pressStartFont {
+  font-family: PressStart2P;
+  color: red
+}
+.card-text {
+  margin-bottom: .4em;
+  font-size: 1em;
+}
+
+.card {
+  margin: 1.2em 0;
+  border: 1.5px grey solid;
+}
+.hide-card {
+  display: none;
+}
+.background {
+  background: url("../img/arcade.jpeg");
+  width: 1200px;
+  height: 285px;
+}
+.form-intro {
+  font-family: PressStart2P;
+  color: black;
+  font-size: 2em;
+  margin-top: 3px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+  animation: blink 1s infinite;
+}
+.navbar {
+  padding: 0.5em 1em
+}
+.publicCss {
+  border: 1px solid #004977;
+  box-sizing: border-box
+}
+.navbar-collapse {
+  margin-right: 20px
+}
+.publicLetter {
+  color: blue;
+  text-transform: lowercase;
+  font-size: 8px;
+}
+#nav-row {
+  margin: 0px 40px 0px 10px;
+}
+@keyframes blink {
+  0% {color: #10BD1B}
+  25% {color:#FFE34F}
+  50% {color: #004977}
+  75% {color: #FFE34F}   
+  100% {color:#D03027}
+}
+
+@media screen and (max-width: 580px) {
+  .intro-div {
+    font-size: 3em;
+  }
+
+  #nav-row {
+    width: 100vw;
+    margin-right: 5px
+  }
+}
