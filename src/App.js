@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Card from './Card';
 import axios from 'axios';
+import SearchBar from './SearchBar'
 
 const server = `http://localhost:3010`
 // const server = 'https://boiling-caverns-58324.herokuapp.com'
@@ -23,7 +24,10 @@ class App extends React.Component {
       method: 'get'
     })
       .then(response => {
-        this.setState({ projects: response.data.users })
+        this.setState({
+          projects: response.data.users,
+          filteredProjects: response.data.users
+        })
       })
   }
 
@@ -80,14 +84,51 @@ class App extends React.Component {
     this.setState({ file: e.target.files[0] });
   }
 
+  filterProjects = () => {
+    const filteredProjectsArray = this.state.projects.filter(project => {
+      return project.fullName.toLowerCase().includes(this.state.searchVal) || project.appName.toLowerCase().includes(this.state.searchVal)
+    })
+    return this.setState({ filteredProjects: filteredProjectsArray })
+  }
+
+  handleChange = e => {
+    this.setState({ searchVal: e.target.value.toLowerCase() }, () => {
+      return this.filterProjects()
+    })
+  }
+
   render() {
     console.log(this.state)
 
-    const projectEls = this.state.projects.map(project => {
+    const projectEls = this.state.filteredProjects.map(project => {
       return <Card key={project.id} project={project} />
     })
     return (
-      <div className="App" >
+      <div className="App">
+        <nav className="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+          <div className="container">
+            <div className="row" id="nav-row">
+              <div className="col-lg-4 col-10">
+                <span className="form-intro">Intercade</span>
+              </div>
+              <div className="col-lg-4 col-2">
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon  float-right"></span>
+                </button>
+              </div>
+            </div>
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item active">
+                </li>
+              </ul>
+              <SearchBar
+                searchVal={this.state.searchVal}
+                handleChange={this.handleChange} />
+            </div>
+          </div>
+        </nav>
+
         <div>File Upload</div>
         <form onSubmit={e => this.onFormSubmit(e)}>
           <h1>File Upload</h1>
