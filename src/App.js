@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import Card from './Card';
 import axios from 'axios';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
+import Form from './Form';
 
 const server = `http://localhost:3010`
 // const server = 'https://boiling-caverns-58324.herokuapp.com'
@@ -66,10 +67,12 @@ class App extends React.Component {
     xhr.send();
   }
 
-  onFormSubmit = e => {
+  onFormSubmit = (e, form) => {
+    console.log(form)
     e.preventDefault()
-    const files = document.getElementById('file-input').files;
-    const file = files[0];
+    // const files = document.getElementById('file-input').files;
+    // const file = files[0];
+    const file = form.myImage[0];
     if (file == null) {
       return alert('No file selected.');
     }
@@ -129,38 +132,7 @@ class App extends React.Component {
           </div>
         </nav>
 
-        <form className='new-form' onSubmit={e => this.onFormSubmit(e)}>
-          <div className="form-group">
-            <label>Full Name:</label>
-            <input type="text" className="form-control" name="fullName" />
-          </div>
-          <div className="form-group">
-            <label>App Name:</label>
-            <input type="text" className="form-control" name="appName" />
-          </div>
-          <div className="form-group">
-            <label>Deployed URL:</label>
-            <input type="text" className="form-control" name="deployUrl" />
-          </div>
-          <div className="form-group">
-            <label>GitHub Repo:</label>
-            <input type="text" className="form-control" name="gitHubRepo" />
-          </div>
-          <div className="form-group">
-            <label>Project:</label>
-            <select>
-              <option value="1">Project 1</option>
-              <option value="2">Project 2</option>
-              <option value="3">Project 3</option>
-              <option value="4">Project 4</option>
-            </select>
-          </div>
-          <div className="form-group">
-            <label>Upload Screenshot:</label>
-            <input type="file" className="form-control" name="myImage" id="file-input" onChange={e => this.onChange(e)} />
-          </div>
-          <button type="submit" className="btn btn-success">Submit</button>
-        </form>
+        <Form onFormSubmit={this.onFormSubmit} />
         <main role="main">
           <div className="album py-5">
             <div className="container">
