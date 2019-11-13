@@ -129,13 +129,38 @@ class App extends React.Component {
           </div>
         </nav>
 
-        <div>File Upload</div>
-        <form onSubmit={e => this.onFormSubmit(e)}>
-          <h1>File Upload</h1>
-          <input type="file" name="myImage" id="file-input" onChange={e => this.onChange(e)} />
-          <button type="submit">Upload</button>
+        <form className='new-form' onSubmit={e => this.onFormSubmit(e)}>
+          <div className="form-group">
+            <label>Full Name:</label>
+            <input type="text" className="form-control" name="fullName" />
+          </div>
+          <div className="form-group">
+            <label>App Name:</label>
+            <input type="text" className="form-control" name="appName" />
+          </div>
+          <div className="form-group">
+            <label>Deployed URL:</label>
+            <input type="text" className="form-control" name="deployUrl" />
+          </div>
+          <div className="form-group">
+            <label>GitHub Repo:</label>
+            <input type="text" className="form-control" name="gitHubRepo" />
+          </div>
+          <div className="form-group">
+            <label>Project:</label>
+            <select>
+              <option value="1">Project 1</option>
+              <option value="2">Project 2</option>
+              <option value="3">Project 3</option>
+              <option value="4">Project 4</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Upload Screenshot:</label>
+            <input type="file" className="form-control" name="myImage" id="file-input" onChange={e => this.onChange(e)} />
+          </div>
+          <button type="submit" className="btn btn-success">Submit</button>
         </form>
-
         <main role="main">
           <div className="album py-5">
             <div className="container">
