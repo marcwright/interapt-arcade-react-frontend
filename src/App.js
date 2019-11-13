@@ -10,8 +10,8 @@ import {
   Link
 } from 'react-router-dom';
 
-const server = `http://localhost:3010`
-// const server = 'https://boiling-caverns-58324.herokuapp.com'
+// const server = `http://localhost:3010`
+const server = 'https://boiling-caverns-58324.herokuapp.com'
 
 class App extends React.Component {
   constructor(props) {
