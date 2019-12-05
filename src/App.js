@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 // const server = `http://localhost:3010`
-const server = 'https://boiling-caverns-58324.herokuapp.com'
+const server = 'https://intercade-backend.herokuapp.com'
 
 class App extends React.Component {
   constructor(props) {
@@ -25,6 +25,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    console.log(document)
     axios({
       url: `${server}/api/users`,
       method: 'get'
