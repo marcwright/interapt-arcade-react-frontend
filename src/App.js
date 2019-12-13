@@ -32,6 +32,7 @@ class App extends React.Component {
       method: 'get'
     })
       .then(response => {
+        console.log(response.data)
         this.setState({
           projects: response.data.users,
           filteredProjects: response.data.users
