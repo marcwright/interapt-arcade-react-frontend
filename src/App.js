@@ -5,14 +5,13 @@ import SearchBar from './SearchBar';
 import Form from './Form';
 import Projects from './Projects';
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom';
 
-const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3010' : process.env.BACKEND_APP_URL
-// const server = `http://localhost:3010`
-// const server = 'https://intercade-backend.herokuapp.com'
+const herokuUrl = 'https://intercade-backend.herokuapp.com'
+const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3010' : herokuUrl
 
 class App extends React.Component {
   constructor(props) {
