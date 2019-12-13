@@ -10,8 +10,9 @@ import {
   Link
 } from 'react-router-dom';
 
-const server = 'https://intercade-backend.herokuapp.com'
+const server = 'https://cors-anywhere.herokuapp.com/https://intercade-backend.herokuapp.com'
 // const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3010' : herokuUrl
+// const server = 'http://localhost:3010'
 
 class App extends React.Component {
   constructor(props) {
