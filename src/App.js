@@ -10,8 +10,8 @@ import {
   Link
 } from 'react-router-dom';
 
-const herokuUrl = 'https://intercade-backend.herokuapp.com'
-const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3010' : herokuUrl
+const server = 'https://intercade-backend.herokuapp.com'
+// const server = process.env.NODE_ENV !== 'production' ? 'http://localhost:3010' : herokuUrl
 
 class App extends React.Component {
   constructor(props) {
