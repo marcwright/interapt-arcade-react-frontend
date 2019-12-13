@@ -8,6 +8,7 @@ const Card = props => (
           src={props.project.imageUrl} />
       </a>
       <div className="card-body">
+        <h6 className="card-text text-center">PROJECT {props.project.project}</h6>
         <p className="card-text text-center">{props.project.fullName.toUpperCase()}
           <span className="black">
             <a href={props.project.gitHubRepo} rel="noopener noreferrer" target="_blank" role="button">/{props.project.appName.toUpperCase()}</a>
@@ -18,7 +19,7 @@ const Card = props => (
         </div>
       </div>
     </div>
-  </div>
+  </div >
 )
 
 export default Card

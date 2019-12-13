@@ -24,3 +24,22 @@
 .new-form {
   margin-top: 100px;
 }
+
+.selectTagNav {
+  margin-left: 50px;
+  padding-left: 50px;
+  border: 1px black solid
+}
+
+.center-nav-links {
+  align-items: center;
+}
+
+.search-box {
+  border: 1px black solid;
+  padding: -12px;
+}
+
+.main-div {
+  margin-top: 10px
+}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar';
 import Form from './Form';
 import Projects from './Projects';
+import SelectTag from './SelectTag';
 import {
   BrowserRouter as Router,
   Route,
@@ -21,7 +22,8 @@ class App extends React.Component {
       file: null,
       projects: [],
       filteredProjects: [],
-      searchVal: ''
+      searchVal: '',
+      selectTagVal: null
     }
   }
 
@@ -93,9 +95,23 @@ class App extends React.Component {
     return this.setState({ filteredProjects: filteredProjectsArray })
   }
 
+  filterProjectsByNumber = () => {
+    const filteredProjectsArray = this.state.projects.filter(project => {
+      console.log(this.state)
+      return project.project === this.state.selectTagVal
+    })
+    return this.setState({ filteredProjects: filteredProjectsArray })
+  }
+
   handleChange = e => {
     this.setState({ searchVal: e.target.value.toLowerCase() }, () => {
       return this.filterProjects()
+    })
+  }
+
+  handleSelectTagChange = e => {
+    this.setState({ selectTagVal: parseInt(e.target.value) }, () => {
+      return this.filterProjectsByNumber()
     })
   }
 
@@ -117,12 +133,20 @@ class App extends React.Component {
                 </div>
               </div>
               <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav mr-auto">
+                <ul className="navbar-nav mr-auto center-nav-links">
                   <li className="nav-item active">
-                    <Link to='/'>Home</Link>{' '}
+                    <Link to='/'>Home</Link>
+                  </li>
+                  <li>
                     <Link to='/newproject'>New Project</Link>
                   </li>
+                  <li>
+                    <SelectTag handleChange={this.handleSelectTagChange} />
+                  </li>
                 </ul>
+
+
+
                 <SearchBar
                   searchVal={this.state.searchVal}
                   handleChange={this.handleChange} />
@@ -132,7 +156,7 @@ class App extends React.Component {
           <Route exact path='/' component={() => <Projects filteredProjects={this.state.filteredProjects} />} />
           <Route path='/newproject' component={() => <Form onFormSubmit={this.onFormSubmit} />} />
         </div>
-      </Router>
+      </Router >
     );
   }
 }

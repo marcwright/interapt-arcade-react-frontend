@@ -3,7 +3,7 @@ import Card from './Card';
 
 const Projects = props => {
   return (
-    < main role="main" >
+    <main role="main" className="main-div">
       <div className="album py-5">
         <div className="container">
           {/* <div className="row animated fadeIn"> */}
