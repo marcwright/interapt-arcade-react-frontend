@@ -9,7 +9,7 @@ class Form extends React.Component {
     super()
     this.state = {
       fullName: '',
-      appName: ',',
+      appName: '',
       deployUrl: '',
       gitHubRepo: '',
       project: null,
@@ -50,6 +50,7 @@ class Form extends React.Component {
           </div>
           <div className="form-group">
             <select className="custom-select" name="project">
+              <option value="" defaultValue>Choose Project</option>
               <option value="1">Project 1</option>
               <option value="2">Project 2</option>
               <option value="3">Project 3</option>

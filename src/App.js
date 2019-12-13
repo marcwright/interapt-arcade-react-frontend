@@ -10,8 +10,8 @@ import {
   Link
 } from 'react-router-dom';
 
-// const server = `http://localhost:3010`
-const server = 'https://intercade-backend.herokuapp.com'
+const server = `http://localhost:3010`
+// const server = 'https://intercade-backend.herokuapp.com'
 
 class App extends React.Component {
   constructor(props) {
@@ -54,9 +54,10 @@ class App extends React.Component {
     xhr.send(file);
   }
 
-  getSignedRequest = file => {
+  getSignedRequest = (file, formData) => {
+    console.log(formData)
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `${server}/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.open('GET', `${server}/sign-s3?file-name=${file.name}&file-type=${file.type}&fullName=${formData.fullName}&appName=${formData.appName}&deployUrl=${formData.deployUrl}&gitHubRepo=${formData.gitHubRepo}&project=${formData.project}`);
     xhr.onreadystatechange = () => {
       console.log(xhr.responseText)
       if (xhr.readyState === 4) {
@@ -79,7 +80,8 @@ class App extends React.Component {
     if (file == null) {
       return alert('No file selected.');
     }
-    this.getSignedRequest(file);
+    console.log(form)
+    this.getSignedRequest(file, form);
   }
 
   filterProjects = () => {
