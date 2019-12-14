@@ -116,7 +116,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(process.env)
     return (
       <Router basename='/'>
         <div className="App">
@@ -124,7 +123,8 @@ class App extends React.Component {
             <div className="container">
               <div className="row" id="nav-row">
                 <div className="col-lg-4 col-10">
-                  <span className="form-intro">Intercade</span>
+                  {/* <span className="form-intro">Interapt Skills</span> */}
+                  <img src="img/int_logo.png" alt="interapt logo" />
                 </div>
                 <div className="col-lg-4 col-2">
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
