@@ -124,11 +124,13 @@ class App extends React.Component {
               <div className="row" id="nav-row">
                 <div className="col-lg-4 col-10">
                   {/* <span className="form-intro">Interapt Skills</span> */}
-                  <img src="img/int_logo.png" alt="interapt logo" />
+                  <a href="/">
+                    <img src="img/int_logo.png" alt="interapt logo" />
+                  </a>
                 </div>
                 <div className="col-lg-4 col-2">
                   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon  float-right"></span>
+                    <span className="navbar-toggler-icon float-right"></span>
                   </button>
                 </div>
               </div>
@@ -140,9 +142,9 @@ class App extends React.Component {
                   <li>
                     <Link to='/newproject'>New Project</Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <SelectTag handleChange={this.handleSelectTagChange} />
-                  </li>
+                  </li> */}
                 </ul>
 
 

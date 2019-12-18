@@ -58,7 +58,7 @@ class Form extends React.Component {
             </select>
           </div>
           <div className="form-group custom-file">
-            <label className="custom-file-label">Upload Screenshot:</label>
+            <label className="custom-file-label">Upload Screenshot</label>
             <input type="file" className="custom-file-input form-control" name="myImage" />
           </div>
           <button type="submit" className="btn btn-success">Submit</button>

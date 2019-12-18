@@ -1,8 +1,8 @@
 import React from 'react';
 
 const SearchBar = props => (
-  <form className="form-inline search-box">
-    <input className="form-control"
+  <form className="form-inline">
+    <input className="search-box"
       type="text"
       placeholder="APP OR STUDENT"
       aria-label="Search"
